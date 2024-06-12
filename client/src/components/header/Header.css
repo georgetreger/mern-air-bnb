@@ -1,4 +1,59 @@
 .header{
   	background-color: rgb(23 37 84);
+    padding: 10px 10px 20px 20px;
+    box-shadow: 4px 5px 8px -4px rgba(0,0,0,0.5);
     
 }
+
+.wraper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        width: 100%;
+}
+
+
+.link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.link h2{
+    color: skyblue;
+    font-weight: bold;
+}
+
+.menu{
+    display: flex;
+    gap: 20px;
+    
+}
+
+.menu li{
+    color: #eee;
+    font-size: 1.2rem;
+    transition: all 1s ease;
+}
+
+.menu li:hover{
+  text-decoration: underline;
+  color: skyblue;
+}
+
+
+@media (max-width: 570px){
+    .about{
+        display: none;
+    }
+    .home{
+        display: none;
+    }
+}
+
+
+
