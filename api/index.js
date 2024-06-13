@@ -12,6 +12,20 @@ app.use(express.json());
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 
+
+//    error middleware
+
+app.use((err, req, res, next)=>{
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Internal Server Error"
+  return res.status(statusCode).json({
+    succsss : false,
+     message,
+    statusCode,
+
+  })
+})
+
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
 });
