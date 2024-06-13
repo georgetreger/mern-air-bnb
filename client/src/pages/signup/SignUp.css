@@ -53,3 +53,8 @@ form input{
     color: skyblue;
     font-weight: bold;
 }
+
+.error{
+    margin: 1rem;
+    color: red;
+}
