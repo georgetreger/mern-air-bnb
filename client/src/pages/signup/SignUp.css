@@ -12,14 +12,14 @@
     font-size: 2.6rem;
 }
 
-form{
+.signup form{
     display: flex;
     flex-direction: column;
     gap: 10px;
     
 }
 
-form input{
+ form input{
     padding: 18px;
     border: 2px solid grey;
     outline: none;

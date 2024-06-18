@@ -2,12 +2,14 @@ import { useState } from "react";
 import "./SignIn.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { signInFailure,signInStart,signInSuccess } from "../../redux/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function SignUp() {
+export default function SignIn() {
   const navigation = useNavigate();
+  const dispatch = useDispatch()
   const [formData, setFormData] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const {loading, error} = useSelector((state)=> state.user)
   console.log(formData);
   const handleChange = (e) => {
     setFormData({
@@ -19,8 +21,7 @@ export default function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true);
-      setError(false);
+       dispatch(signInStart())
       const res = await fetch("/api/auth/signin", {
         method: "POST",
         headers: {
@@ -29,16 +30,17 @@ export default function SignUp() {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      setLoading(false);
+      
       if (data.success === false) {
-        setError(true);
+        dispatch(signInFailure(data))
 
         return;
       }
+      dispatch(signInSuccess(data));
       navigation("/");
     } catch (error) {
-      setLoading(false);
-      setError(true);
+     dispatch(signInFailure(error))
+     
     }
   };
   return (
@@ -63,12 +65,12 @@ export default function SignUp() {
         </button>
       </form>
       <div className="account">
-        <p>dnt have an account?</p>
+        <p>dont have an account?</p>
         <Link to={"/sign-up"}>
           <span className="spa">Sign Up</span>
         </Link>
       </div>
-      <p className="error">{error && "Something went wrong"}</p>
+      <p className="error">{error ? error.message  || "Something went wrong" : ""}</p>
     </div>
   );
 }

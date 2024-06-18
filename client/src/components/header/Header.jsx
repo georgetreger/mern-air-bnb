@@ -11,19 +11,21 @@ export default function Header() {
             <h2>Booking</h2>
           </Link>
         </div>
-       
-          <ul className="menu">
-            <Link to={"/"}>
-              <li className="home">Home</li>
-            </Link>
-            <Link to={"/about"}>
-              <li className="about">About</li>
-            </Link>
-            <Link to={"/sign-in"}>
-              <li>Signin</li>
-            </Link>
-          </ul>
-       
+        <div className="input-w">
+          <input type="text" />
+        </div>
+
+        <ul className="menu">
+          <Link to={"/"}>
+            <li className="home">Home</li>
+          </Link>
+          <Link to={"/about"}>
+            <li className="about">About</li>
+          </Link>
+          <Link to={"/sign-in"}>
+            <li>Signin</li>
+          </Link>
+        </ul>
       </div>
     </div>
   );
